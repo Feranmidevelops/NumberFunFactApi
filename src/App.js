@@ -19,6 +19,7 @@ function App() {
     if (isArmstrong(num)) properties.push('armstrong');
     if (isOdd(num)) properties.push('odd'); else properties.push('even');
     const funFactData = await getNumberProperties(num);
+    if (funFactData && funFactData.text) {
     setResult({
       number: num,
       is_prime: isPrime(num),
@@ -27,6 +28,10 @@ function App() {
       digit_sum: digitSum(num),
       fun_fact: funFactData.text,
     });
+  } else{
+    setError(true);
+    setResult(null);
+  }
     setError(false);
   };
 
