@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { getNumberProperties } from './services/numberService';
-import { isPrime, isPerfect, isArmstrong, isOdd, digitSum } from './utils/numberUtils';
+import { getNumberProperties } from './NumberService';
+import { isPrime, isPerfect, isArmstrong, isOdd, digitSum } from './NumberUtils';
 
 function App() {
   const [number, setNumber] = useState('');
