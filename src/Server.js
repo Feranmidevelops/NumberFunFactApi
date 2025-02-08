@@ -16,10 +16,19 @@ app.get("/", (req, res) => {
 
 // Route for number-based requests
 app.get("/api/classify-number", async (req, res) => {
-  const { number } = req.query;
+  let { number } = req.query;
+
+  if (!number) {
+    return res.status(400).json({ error: "Missing parameter: 'number' is required." });
+  }
+
 
   // Validate input
-  if (isNaN(number) || number === "" || number === null) {
+  number = parseFloat(number);
+  number = Math.abs(Number(number));
+  number = Math.abs(Math.round(number));
+
+  if (isNaN(number)) {
     return res
       .status(400)
       .json({ error: "Invalid input: Please enter a numeric value." });
