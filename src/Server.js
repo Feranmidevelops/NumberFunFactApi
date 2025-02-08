@@ -11,12 +11,12 @@ app.use(express.json());
 
 // Root route for basic information
 app.get("/", (req, res) => {
-  res.send("Welcome to the Number Fun Fact API! Use /:number to get a fun fact.");
+  res.send("Welcome to the Number Fun Fact API! use /api/classify-number to get a fun fact.");
 });
 
 // Route for number-based requests
-app.get("/:number", async (req, res) => {
-  const { number } = req.params;
+app.get("/api/classify-number", async (req, res) => {
+  const { number } = req.query;
 
   // Validate input
   if (isNaN(number) || number === "" || number === null) {
